@@ -3,29 +3,46 @@
 <html lang="fr">
 
 <head>
-    <!-- IOS support -->
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="PWAssistant">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link rel="apple-touch-icon" href="drop.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="drop-180x180.png">
-    <link href="apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
-
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Simple PWA</title>
+    <link rel="canonical" href="https://simplepwa.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ABasic HTML5 Template</title>
-    <meta name="description" content="A simple HTML5 Template for new projects.">
-    <meta name="author" content="joLesieur">
 
-    <meta property="og:title" content="A Basic HTML5 Template">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
-    <meta property="og:description" content="A simple HTML5 Template for new projects.">
-    <meta property="og:image" content="image.png">
+    <!-- Icons and Colors -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="./mstile-144x144.png">
+    <meta name="msapplication-config" content="./browserconfig.xml">
+    <meta name="theme-color" content="#000000">
 
-    <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- SEO and Social Sharing and SEO -->
+    <meta name="description" content="Simple Progressive Web App (PWA) template" />
+    <meta name="robots" content="noodp" />
+    <meta name="author" content="Nicole Furlan">
+    <meta name="keywords" content="progressive web app, progressive web application, pwa, pwa progressive web app, pwa progressive web application, progressive app, basic progressive web app, basic progressive web application, basic pwa, example progressive web app, example progressive web application, example pwa, progressive web app basic, progressive web app builder, progressive web app example, progressive web app sample, progressive web app template, sample progressive web app, sample progressive web application, sample pwa, free progressive web application template, progressive web application template, progressive web app template free, progressive web app template free download, progressive web app html template, progressive web app template github" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Simple PWA" />
+    <meta property="og:description" content="Simple Progressive Web App (PWA) template" />
+    <meta property="og:url" content="https://simplepwa.com" />
+    <meta property="og:site_name" content="Simple PWA" />
+    <meta property="section:publisher" content="https://www.facebook.com/simplepwa/" />
+    <meta property="og:image" content="https://simplepwa.com/share.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Simple PWA" />
+    <meta name="twitter:description" content="Simple Progressive Web App (PWA) template" />
+    <meta name="twitter:site" content="@simplepwa" />
+    <meta name="twitter:image" content="https://simplepwa.com/share.jpg" />
+    <meta name="twitter:creator" content="@nicolemfurlan" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
 
     <!-- Feuilles de style inportées-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -37,6 +54,16 @@
     <!-- Librairie d'icones -->
     <script src="js/solid.js"></script>
     <script src="js/fontawesome.js"></script>
+
+    <!-- Javscript -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker && navigator.serviceWorker.register("./sw.js");
+            });
+        }
+    </script>
+    <script defer src="./main.js"></script>
 
     <style>
         .bd-placeholder-img {
@@ -110,43 +137,44 @@
             user-select: none;
             /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
         }
-
     </style>
 </head>
 
 <body>
     <!-- Début - Barre de navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <!-- Logo et titre de la page -->
-            <span class="navbar-brand noselect"><i class="fas fa-cog icon" style="color:#2196F3"></i> TITRE DE L'APLI<br></span>
-            <!-- Bouton pour le menu sur mobile -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <!-- Logo et titre de la page -->
+                <span class="navbar-brand noselect"><i class="fas fa-cog icon" style="color:#2196F3"></i> TITRE DE L'APLI<br></span>
+                <!-- Bouton pour le menu sur mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse ms-auto mt-auto mb-0" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="content-1-tab" data-bs-toggle="tab" data-bs-target="#content-1" type="button" role="tab" aria-controls="content-1" aria-selected="true">Page 1</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="content-2-tab" data-bs-toggle="tab" data-bs-target="#content-2" type="button" role="tab" aria-controls="content-2" aria-selected="true">Page 2</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="nav-dropdown" data-bs-toggle="dropdown" aria-expanded="false">Autre</a>
-                        <ul class="dropdown-menu" aria-labelledby="nav-dropdown">
-                            <li><a class="dropdown-item" id="content-3-tab" data-bs-toggle="tab" data-bs-target="#content-3" type="button" role="tab" aria-controls="content-3" aria-selected="true">Page 3</a></li>
-                            <li><a class="dropdown-item" id="content-4-tab" data-bs-toggle="tab" data-bs-target="#content-4" type="button" role="tab" aria-controls="content-4" aria-selected="true">Page 4</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <div class="collapse navbar-collapse ms-auto mt-auto mb-0" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="content-1-tab" data-bs-toggle="tab" data-bs-target="#content-1" type="button" role="tab" aria-controls="content-1" aria-selected="true">Page 1</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="content-2-tab" data-bs-toggle="tab" data-bs-target="#content-2" type="button" role="tab" aria-controls="content-2" aria-selected="true">Page 2</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="nav-dropdown" data-bs-toggle="dropdown" aria-expanded="false">Autre</a>
+                            <ul class="dropdown-menu" aria-labelledby="nav-dropdown">
+                                <li><a class="dropdown-item" id="content-3-tab" data-bs-toggle="tab" data-bs-target="#content-3" type="button" role="tab" aria-controls="content-3" aria-selected="true">Page 3</a></li>
+                                <li><a class="dropdown-item" id="content-4-tab" data-bs-toggle="tab" data-bs-target="#content-4" type="button" role="tab" aria-controls="content-4" aria-selected="true">Page 4</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
     <!-- Fin - Barre de navigation -->
 
     <main class="">
@@ -243,6 +271,12 @@
         </div>
     </main>
 
+    <footer>
+        <div class="container">
+            <p>If you find this useful, please share it, and if you can, support me directly on <a href="https://patreon.com/nicolefurlan" target="_blank" rel="noopener nofollow">Patreon</a> or <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FACW2AMWGLZ6S&source=url" target="_blank" rel="noopener nofollow">Paypal</a>. Your support is greatly appreciated!&nbsp;<span class="icon heart" role="img" aria-label="Heart">&#x2764;</span></p>
+        </div>
+    </footer>
+
     <script>
         // Ferme le menu déroulant lorque l'on clique sur un lien.
         $(".navbar-nav li a").on("click", function() {
@@ -250,8 +284,5 @@
                 $(".navbar-collapse").collapse("hide");
             }
         });
-
     </script>
-</body>
-
-</html>
+</body></html>
