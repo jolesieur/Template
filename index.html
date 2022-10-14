@@ -3,6 +3,15 @@
 <html lang="fr">
 
 <head>
+    <!-- IOS support -->
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="PWAssistant">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="drop.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="drop-180x180.png">
+    <link href="apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ABasic HTML5 Template</title>
@@ -14,14 +23,6 @@
     <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
     <meta property="og:description" content="A simple HTML5 Template for new projects.">
     <meta property="og:image" content="image.png">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="PWAssistant">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link rel="apple-touch-icon" href="drop.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="drop-180x180.png">
-    <link href="apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
 
     <link rel="icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -109,6 +110,7 @@
             user-select: none;
             /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
         }
+
     </style>
 </head>
 
@@ -248,5 +250,8 @@
                 $(".navbar-collapse").collapse("hide");
             }
         });
+
     </script>
-</body></html>
+</body>
+
+</html>
