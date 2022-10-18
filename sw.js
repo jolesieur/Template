@@ -1,12 +1,12 @@
-const cacheName = "cache1"; // Change value to force update
+const cacheName = "cache12"; // Change value to force update
 
 self.addEventListener("install", event => {
-	// Kick out the old service worker
-	self.skipWaiting();
+    // Kick out the old service worker
+    self.skipWaiting();
 
-	event.waitUntil(
-		caches.open(cacheName).then(cache => {
-			return cache.addAll([
+    event.waitUntil(
+        caches.open(cacheName).then(cache => {
+            return cache.addAll([
 				"/",
 				"android-chrome-36x36.png", // Favicon, Android Chrome M39+ with 0.75 screen density
 				"android-chrome-48x48.png", // Favicon, Android Chrome M39+ with 1.0 screen density
@@ -45,23 +45,23 @@ self.addEventListener("install", event => {
 				"share.jpg", // Social media sharing
 				"style.css", // Main CSS file
 			]);
-		})
-	);
+        })
+    );
 });
 
 self.addEventListener("activate", event => {
-	// Delete any non-current cache
-	event.waitUntil(
-		caches.keys().then(keys => {
-			Promise.all(
-				keys.map(key => {
-					if (![cacheName].includes(key)) {
-						return caches.delete(key);
-					}
-				})
-			)
-		})
-	);
+    // Delete any non-current cache
+    event.waitUntil(
+        caches.keys().then(keys => {
+            Promise.all(
+                keys.map(key => {
+                    if (![cacheName].includes(key)) {
+                        return caches.delete(key);
+                    }
+                })
+            )
+        })
+    );
 });
 
 // Offline-first, cache-first strategy
@@ -69,14 +69,14 @@ self.addEventListener("activate", event => {
 // If there's a cached version available, use it, but fetch an update for next time.
 // Gets data on screen as quickly as possible, then updates once the network has returned the latest data. 
 self.addEventListener("fetch", event => {
-	event.respondWith(
-		caches.open(cacheName).then(cache => {
-			return cache.match(event.request).then(response => {
-				return response || fetch(event.request).then(networkResponse => {
-					cache.put(event.request, networkResponse.clone());
-					return networkResponse;
-				});
-			})
-		})
-	);
+    event.respondWith(
+        caches.open(cacheName).then(cache => {
+            return cache.match(event.request).then(response => {
+                return response || fetch(event.request).then(networkResponse => {
+                    cache.put(event.request, networkResponse.clone());
+                    return networkResponse;
+                });
+            })
+        })
+    );
 });
