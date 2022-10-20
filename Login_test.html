@@ -75,41 +75,8 @@
     </script>
     <script defer src="./main.js"></script>
 
+
     <style>
-        .reset {
-            all: revert;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        .flex-container {
-            /* We first create a flex layout context */
-            display: flex;
-
-            /* Then we define the flow direction 
-     and if we allow the items to wrap 
-   * Remember this is the same as:
-   * flex-direction: row;
-   * flex-wrap: wrap;
-   */
-            flex-flow: row wrap;
-
-            /* Then we define how is distributed the remaining space */
-            justify-content: space-around;
-
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-
-        .flex-item {
-            padding: 5px;
-            width: 150px;
-            height: 80px;
-
-            text-align: center;
-        }
-
         body {
             /* Disable highlighting */
             -webkit-tap-highlight-color: transparent;
@@ -234,56 +201,16 @@
     <main class="">
         <div class="tab-content bg-light p-5 rounded">
             <!-- Début - Accueil -->
-
-            <!-- style="display:none;" -->
             <div class="tab-pane fade show active" id="home" aria-labelledby="tab-0" role="tabpanel">
                 <h1>Accueil</h1>
                 <h3 class="lead">Bienvenue dans l'application.</h3>
-                <div class="container">
-                    <div> Omsose Laboratoires </div>
-                    <ul class="flex-container" style="border:1px solid #cecece;">
-                        <li class="flex-item">
-                            <div> Description </div>
-                            <div class="border border-success border-5"><B>26.2°C</B></div>
-                        </li>
-                        <li class="flex-item">
-                            <div> Description </div>
-                            <div class="border border-warning border-5"><B>26.2°C</B></div>
-                        </li>
-                        <li class="flex-item">
-                            <div> Description </div>
-                            <div class="border border-danger border-5"><B>26.2°C</B></div>
-                        </li>
-                        <li class="flex-item">
-                            <div> Description </div>
-                            <div class="border border-secondary border-5"><B>26.2°C</B></div>
-                        </li>
-                    </ul>
+                <div class="d-flex">
+                    <div class="m-auto text-center">
+                        <p>Contenu de la page ICI</p>
+                        <div id="firebaseui-auth-container"></div>
+                    </div>
                 </div>
             </div>
-            <fieldset class="reset">
-                <legend class="reset">
-                    <h3 id="remplacement" class="lead"><b>Reset legend</b></h3>
-                </legend>
-                <ul class="flex-container">
-                    <li class="flex-item">
-                        <div> Description </div>
-                        <div class="border border-success border-5"><B>26.2°C</B></div>
-                    </li>
-                    <li class="flex-item">
-                        <div> Description </div>
-                        <div class="border border-warning border-5"><B>26.2°C</B></div>
-                    </li>
-                    <li class="flex-item">
-                        <div> Description </div>
-                        <div class="border border-danger border-5"><B>26.2°C</B></div>
-                    </li>
-                    <li class="flex-item">
-                        <div> Description </div>
-                        <div class="border border-secondary border-5"><B>26.2°C</B></div>
-                    </li>
-                </ul>
-            </fieldset>
             <!-- Fin - Accueil -->
 
             <!-- Début - Page 1 -->
@@ -403,8 +330,6 @@
             </symbol>
         </svg>
     </footer>
-
-
     <script>
         // Ferme le menu déroulant lorque l'on clique sur un lien.
         $(".navbar-nav li a").on("click", function() {
@@ -413,4 +338,30 @@
             }
         });
     </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#config-web-app -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAhnI6Wuxy9-lCaaz8NeIah6GieElHfGgY",
+            authDomain: "pwassistant-f0c9f.firebaseapp.com",
+            databaseURL: "https://pwassistant-f0c9f-default-rtdb.firebaseio.com",
+            projectId: "pwassistant-f0c9f",
+            storageBucket: "pwassistant-f0c9f.appspot.com",
+            messagingSenderId: "129191690225",
+            appId: "1:129191690225:web:e12cc17357083790edce50",
+            measurementId: "G-40Y1FWMG5L"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <!-- Firebase UI -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="./auth.js"></script>
+
 </body></html>
