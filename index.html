@@ -103,9 +103,9 @@
         }
 
         .flex-item {
-            padding: 5px;
+            padding: 2px;
             width: 150px;
-            height: 80px;
+            height: 50px;
 
             text-align: center;
         }
@@ -148,7 +148,7 @@
         }
 
         .icon {
-            font-size: 50px;
+            font-size: 20px;
         }
 
         /* Specific formating for mobile device screen */
@@ -240,11 +240,45 @@
                 <h1>Accueil</h1>
                 <h3 class="lead">Bienvenue dans l'application.</h3>
                 <div class="container">
-                    <div> Omsose Laboratoires </div>
-                    <ul class="flex-container" style="border:1px solid #cecece;">
+                                <fieldset class="reset">
+                <legend class="reset">
+                    <h3 id="remplacement" class="lead"><b>Reset legend</b></h3>
+                </legend>
+                    <ul class="flex-container">
+                     
+                        <fieldset class="reset">
+                <legend class="reset">
+                    <h3 id="remplacement" class="lead"><b>Température</b></h3>
+                </legend>
+                    <ul class="flex-container">
+                        <li class="flex-item">
+                            <div class="text-center"> eau mitigée </div>
+                            <div class="border border-success border-5 rounded-3"><B>26.2°C</B></div>
+                        </li>
                         <li class="flex-item">
                             <div> Description </div>
-                            <div class="border border-success border-5"><B>26.2°C</B></div>
+                            <div class="border border-warning border-5"><B>26.2°C</B></div>
+                        </li>
+                    </ul>
+                            </fieldset>
+                        <fieldset class="reset">
+                <legend class="reset">
+                    <h3 id="remplacement" class="lead"><b>Pression</b></h3>
+                </legend>
+                    <ul class="flex-container">
+                        <li class="flex-item">
+                            <div class="text-center"> eau froide </div>
+                            <div class="border border-success border-5 rounded-3"><B>26 psi</B></div>
+                        </li>
+                        <li class="flex-item">
+                            <div> eau chaude </div>
+                            <div class="border border-warning border-5"><B>19 psi</B></div>
+                        </li>
+                    </ul>
+                            </fieldset>
+                        <li class="flex-item">
+                            <div class="text-center"> eau mitigée </div>
+                            <div class="border border-success border-5 rounded-3"><B>26.2°C</B></div>
                         </li>
                         <li class="flex-item">
                             <div> Description </div>
@@ -254,35 +288,13 @@
                             <div> Description </div>
                             <div class="border border-danger border-5"><B>26.2°C</B></div>
                         </li>
-                        <li class="flex-item">
+                        <li class="flex-item d-none d-md-block">
                             <div> Description </div>
                             <div class="border border-secondary border-5"><B>26.2°C</B></div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <fieldset class="reset">
-                <legend class="reset">
-                    <h3 id="remplacement" class="lead"><b>Reset legend</b></h3>
-                </legend>
-                <ul class="flex-container">
-                    <li class="flex-item">
-                        <div> Description </div>
-                        <div class="border border-success border-5"><B>26.2°C</B></div>
-                    </li>
-                    <li class="flex-item">
-                        <div> Description </div>
-                        <div class="border border-warning border-5"><B>26.2°C</B></div>
-                    </li>
-                    <li class="flex-item">
-                        <div> Description </div>
-                        <div class="border border-danger border-5"><B>26.2°C</B></div>
-                    </li>
-                    <li class="flex-item">
-                        <div> Description </div>
-                        <div class="border border-secondary border-5"><B>26.2°C</B></div>
-                    </li>
-                </ul>
             </fieldset>
             <!-- Fin - Accueil -->
 
