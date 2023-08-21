@@ -97,16 +97,18 @@
 
         .topnav {
             overflow: hidden;
-            background-color: #333;
+            background-color: #ffffff;
             font-family: 'Roboto', sans-serif;
             color: #000;
             font-size: 60px;
+            border: 2px;
+            border-bottom: 1px solid #edf0f2
         }
 
         .topnav a {
             float: left;
             display: block;
-            color: #f2f2f2;
+            color: #304351;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
@@ -155,11 +157,226 @@
                 text-align: left;
             }
         }
+
+        :root {
+  --navbar-bg-color: hsl(0, 0%, 15%);
+  --navbar-text-color: hsl(0, 0%, 85%);
+  --navbar-text-color-focus: white;
+  --navbar-bg-contrast: hsl(0, 0%, 25%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+        .container {
+  
+  padding: 0 1.4rem;
+  margin: 0 auto;
+}
+#navbar {
+    font-family: 'Roboto', sans-serif;
+  --navbar-height: 80px;
+  position: fixed;
+  height: var(--navbar-height);
+  background-color: var(--navbar-bg-color);
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+}
+.navbar-item {
+  margin: 0.4em;
+  width: 100%;
+}
+
+.home-link,
+.navbar-link {
+  color: var(--navbar-text-color);
+  text-decoration: none;
+  display: flex;
+  font-weight: 400;
+  align-items: center;
+}
+
+.home-link:is(:focus, :hover) {
+  color: var(--navbar-text-color-focus);
+}
+
+.navbar-link {
+  justify-content: center;
+  width: 100%;
+  padding: 0.4em 0.8em;
+  border-radius: 5px;
+}
+
+.navbar-link:is(:focus, :hover) {
+  color: var(--navbar-text-color-focus);
+  background-color: var(--navbar-bg-contrast);
+}
+.navbar-logo {
+  background-color: var(--navbar-text-color-focus);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-inline-start: 0.5em;
+  margin-right: 0.5rem;
+}
+#navbar-toggle {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.icon-bar {
+  display: block;
+  width: 25px;
+  height: 4px;
+  margin: 2px;
+  background-color: var(--navbar-text-color);
+}
+
+#navbar-toggle:is(:focus, :hover) .icon-bar {
+  background-color: var(--navbar-text-color-focus);
+}
+#navbar-toggle[aria-expanded='true'] .icon-bar:is(:first-child, :last-child) {
+  position: absolute;
+  margin: 0;
+  width: 30px;
+}
+
+#navbar-toggle[aria-expanded='true'] .icon-bar:first-child {
+  transform: rotate(45deg);
+}
+
+#navbar-toggle[aria-expanded='true'] .icon-bar:nth-child(2) {
+  opacity: 0;
+}
+
+#navbar-toggle[aria-expanded='true'] .icon-bar:last-child {
+  transform: rotate(-45deg);
+}
+#navbar-menu {
+  position: fixed;
+  top: var(--navbar-height);
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  left: 0;
+  right: 0;
+}
+#navbar-toggle[aria-expanded='true'] + #navbar-menu {
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  visibility: visible;
+}
+/* appears detached from the rest of the navbar
+.navbar-links {
+  list-style: none;
+  position: absolute;
+  background-color: var(--navbar-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0;
+  right: 0;
+  margin: 1.4rem;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+} */
+.navbar-links {
+  list-style: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: var(--navbar-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
+}
+
+#navbar-toggle[aria-expanded='true'] + #navbar-menu .navbar-links {
+  padding: 1em;
+}
+
+@media screen and (min-width: 1000px) {
+  #navbar-toggle,
+  #navbar-toggle[aria-expanded='true'] {
+    display: none;
+  }
+
+  #navbar-menu,
+  #navbar-toggle[aria-expanded='true'] + #navbar-menu {
+    visibility: visible;
+    opacity: 1;
+    position: static;
+    display: block;
+    height: 100%;
+  }
+
+  .navbar-links,
+  #navbar-toggle[aria-expanded='true'] + #navbar-menu .navbar-links {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    position: static;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+}
     </style>
 </head>
 
 
 <body>
+    <header id="navbar">
+        <nav class="navbar-container container">
+          <a href="/" class="home-link">
+            <div class="navbar-logo"></div>
+            Website Name
+          </a>
+          <button
+            type="button"
+            id="navbar-toggle"
+            aria-controls="navbar-menu"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div id="navbar-menu" aria-labelledby="navbar-toggle">
+            <ul class="navbar-links">
+              <li class="navbar-item"><a class="navbar-link" href="">About</a></li>
+              <li class="navbar-item"><a class="navbar-link" href="">Blog</a></li>
+              <li class="navbar-item"><a class="navbar-link" href="">Careers</a></li>
+              <li class="navbar-item"><a class="navbar-link" href="">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!--
     <div class="topnav" id="myTopnav">
         <a href="#home" class="active">Home</a>
         <a href="#news">News</a>
@@ -175,9 +392,45 @@
     </h1>
     <p contenteditable="true" spellcheck="false" class="edit variation">Lorem ipsum dolor sit amet, consectetur
         adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    -->
+    <p style="color: #000;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed velit dignissim sodales ut eu sem integer vitae. Aliquet bibendum enim facilisis gravida neque convallis. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra. Eu sem integer vitae justo eget magna fermentum iaculis. Ultricies leo integer malesuada nunc vel risus. Elit ullamcorper dignissim cras tincidunt lobortis feugiat. Aliquet bibendum enim facilisis gravida neque convallis a cras. Sed libero enim sed faucibus turpis in eu mi bibendum. Nunc faucibus a pellentesque sit amet porttitor. Sit amet risus nullam eget felis eget nunc lobortis. Est ante in nibh mauris. Sagittis purus sit amet volutpat consequat mauris. Sagittis id consectetur purus ut faucibus pulvinar elementum. Sagittis eu volutpat odio facilisis mauris. Cursus eget nunc scelerisque viverra mauris in aliquam. Fermentum posuere urna nec tincidunt praesent semper feugiat nibh.
+
+        Cras ornare arcu dui vivamus arcu felis. Ornare quam viverra orci sagittis eu volutpat odio. Dapibus ultrices in iaculis nunc sed augue lacus viverra vitae. Dignissim sodales ut eu sem integer vitae. Magna ac placerat vestibulum lectus mauris ultrices. Pellentesque nec nam aliquam sem et tortor consequat id. Pellentesque id nibh tortor id aliquet lectus. Fusce id velit ut tortor pretium viverra suspendisse potenti. Proin nibh nisl condimentum id venenatis a condimentum vitae. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus aenean. Eu mi bibendum neque egestas congue quisque egestas diam.
+        
+        Amet luctus venenatis lectus magna fringilla. Vestibulum morbi blandit cursus risus at ultrices mi tempus imperdiet. Lacinia at quis risus sed vulputate. Sit amet venenatis urna cursus eget nunc. Neque egestas congue quisque egestas diam in arcu cursus. Ut ornare lectus sit amet est placerat. Vitae et leo duis ut diam quam nulla porttitor. Orci porta non pulvinar neque. Elementum curabitur vitae nunc sed. Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero. Ornare aenean euismod elementum nisi quis. Odio pellentesque diam volutpat commodo sed. Amet tellus cras adipiscing enim eu turpis egestas pretium. Risus viverra adipiscing at in tellus integer feugiat. Neque ornare aenean euismod elementum nisi quis eleifend. Ac turpis egestas maecenas pharetra convallis posuere morbi.
+        
+        Tincidunt id aliquet risus feugiat. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. Tristique sollicitudin nibh sit amet commodo. Augue neque gravida in fermentum et sollicitudin ac orci phasellus. Vitae proin sagittis nisl rhoncus mattis rhoncus. Tincidunt lobortis feugiat vivamus at augue eget. Tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra. Volutpat consequat mauris nunc congue nisi vitae suscipit tellus. Lectus sit amet est placerat in. Netus et malesuada fames ac turpis. Maecenas sed enim ut sem viverra. Viverra vitae congue eu consequat ac felis donec et. Vitae nunc sed velit dignissim sodales ut eu.
+        
+        Eget arcu dictum varius duis at consectetur lorem donec. Nec sagittis aliquam malesuada bibendum arcu. Turpis egestas pretium aenean pharetra. Lobortis elementum nibh tellus molestie nunc. Adipiscing tristique risus nec feugiat. Nunc congue nisi vitae suscipit. Ut pharetra sit amet aliquam id diam maecenas ultricies mi. Enim ut tellus elementum sagittis vitae et leo. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper eget. Id semper risus in hendrerit gravida rutrum quisque. Nam aliquam sem et tortor consequat id. Cras sed felis eget velit aliquet sagittis id consectetur purus. Orci ac auctor augue mauris augue neque gravida. Vestibulum sed arcu non odio. Curabitur vitae nunc sed velit dignissim sodales ut eu. Sed vulputate mi sit amet mauris commodo. Purus faucibus ornare suspendisse sed nisi lacus sed viverra.
+        
+        In fermentum et sollicitudin ac orci. Vestibulum sed arcu non odio euismod lacinia at quis risus. Nisl pretium fusce id velit ut tortor. Nunc consequat interdum varius sit amet mattis vulputate enim. Lectus proin nibh nisl condimentum. Adipiscing tristique risus nec feugiat in fermentum. Orci sagittis eu volutpat odio facilisis mauris sit amet. Viverra adipiscing at in tellus integer feugiat scelerisque varius. Volutpat lacus laoreet non curabitur gravida arcu ac tortor. Volutpat blandit aliquam etiam erat velit. Congue quisque egestas diam in arcu cursus euismod quis viverra. Et leo duis ut diam quam nulla porttitor massa. Habitant morbi tristique senectus et netus et malesuada fames ac. Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla.
+        
+        Viverra nibh cras pulvinar mattis nunc sed. Placerat duis ultricies lacus sed turpis tincidunt. Sit amet est placerat in egestas erat imperdiet sed. Aliquam malesuada bibendum arcu vitae elementum curabitur. Donec et odio pellentesque diam volutpat commodo sed egestas. Gravida in fermentum et sollicitudin ac orci phasellus egestas. Morbi tristique senectus et netus et malesuada fames ac. Odio aenean sed adipiscing diam donec adipiscing tristique risus. Sit amet nulla facilisi morbi tempus iaculis urna id volutpat. Morbi non arcu risus quis. Vitae sapien pellentesque habitant morbi tristique senectus. Est ultricies integer quis auctor. Aliquet risus feugiat in ante metus dictum. Est lorem ipsum dolor sit amet consectetur adipiscing elit. Nisl purus in mollis nunc sed id semper risus in. Pellentesque dignissim enim sit amet venenatis. Maecenas pharetra convallis posuere morbi leo urna molestie at elementum. Sed risus pretium quam vulputate dignissim. Netus et malesuada fames ac turpis egestas maecenas.
+        
+        Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. Consequat mauris nunc congue nisi vitae suscipit tellus mauris a. Et sollicitudin ac orci phasellus. Lorem ipsum dolor sit amet consectetur. Risus ultricies tristique nulla aliquet enim tortor. Tincidunt arcu non sodales neque sodales ut etiam sit. Eget nunc lobortis mattis aliquam faucibus purus in massa tempor. Diam ut venenatis tellus in metus. Etiam tempor orci eu lobortis. Urna duis convallis convallis tellus id interdum. Viverra adipiscing at in tellus integer feugiat scelerisque. Amet consectetur adipiscing elit pellentesque habitant morbi tristique senectus. Elementum eu facilisis sed odio morbi quis commodo. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh sit. Sed libero enim sed faucibus turpis in eu mi bibendum. Nulla facilisi etiam dignissim diam. Magna eget est lorem ipsum dolor. Condimentum mattis pellentesque id nibh tortor. Sit amet purus gravida quis. Vestibulum lectus mauris ultrices eros in cursus turpis massa.
+        
+        Iaculis at erat pellentesque adipiscing commodo elit at. Gravida cum sociis natoque penatibus et magnis. Imperdiet massa tincidunt nunc pulvinar sapien. Morbi tempus iaculis urna id volutpat lacus laoreet. Ullamcorper velit sed ullamcorper morbi. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Risus nullam eget felis eget nunc lobortis mattis. Imperdiet proin fermentum leo vel orci porta non pulvinar. Elit duis tristique sollicitudin nibh sit amet commodo. Massa placerat duis ultricies lacus. Mollis nunc sed id semper. Amet massa vitae tortor condimentum lacinia quis vel eros donec. Posuere urna nec tincidunt praesent semper feugiat nibh sed. Ut etiam sit amet nisl purus in mollis. Et malesuada fames ac turpis. Mauris a diam maecenas sed enim ut.
+        
+        Tellus id interdum velit laoreet id donec ultrices tincidunt. Natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. In ornare quam viverra orci sagittis. Sit amet est placerat in egestas erat imperdiet. Vestibulum lorem sed risus ultricies tristique nulla aliquet enim tortor. Mauris pharetra et ultrices neque ornare aenean euismod. Dictum varius duis at consectetur lorem. Vel facilisis volutpat est velit egestas. Amet est placerat in egestas. Faucibus et molestie ac feugiat. Orci ac auctor augue mauris augue neque gravida in fermentum. Quis varius quam quisque id diam. At augue eget arcu dictum varius duis at consectetur. Varius duis at consectetur lorem donec massa sapien faucibus et. Sit amet risus nullam eget felis eget nunc lobortis mattis. Euismod elementum nisi quis eleifend. Dui id ornare arcu odio ut sem nulla pharetra. Quisque sagittis purus sit amet volutpat consequat mauris. Habitant morbi tristique senectus et netus.</p>
 </body>
 <script src="https://unpkg.com/scrollreveal"></script>
 <script>
+const navbarToggle = navbar.querySelector('#navbar-toggle');
+let isNavbarExpanded = navbarToggle.getAttribute('aria-expanded') === 'true';
+
+const toggleNavbarVisibility = () => {
+  isNavbarExpanded = !isNavbarExpanded;
+  navbarToggle.setAttribute('aria-expanded', isNavbarExpanded);
+};
+
+navbarToggle.addEventListener('click', toggleNavbarVisibility);
+
+const navbarMenu = document.querySelector('#navbar-menu');
+const navbarLinksContainer = navbarMenu.querySelector('.navbar-links');
+
+navbarLinksContainer.addEventListener('click', (e) => e.stopPropagation());
+navbarMenu.addEventListener('click', toggleNavbarVisibility);
+
 
     //scroll-par
     ScrollReveal().reveal('.scroll-par', { duration: 2100 });
